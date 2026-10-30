@@ -1,0 +1,12 @@
+{
+  "name": "uberllm",
+  "description": "UberLLM for Claude Code: the hosted MCP server and the setup skill.",
+  "owner": { "name": "UberLLM", "email": "support@uberllm.dev", "url": "https://uberllm.dev" },
+  "plugins": [
+    {
+      "name": "uberllm",
+      "source": "./",
+      "description": "Make images and videos, price requests, list AI models and read your balance through UberLLM's MCP server, plus a skill that sets up UberLLM in Claude Code and other tools."
+    }
+  ]
+}

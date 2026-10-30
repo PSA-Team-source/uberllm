@@ -1,0 +1,44 @@
+{
+  "name": "uberllm",
+  "displayName": "UberLLM",
+  "version": "1.0.0",
+  "description": "UberLLM MCP server (make images and videos, price requests, list models, read your balance) and a skill for setting up UberLLM's OpenAI- and Anthropic-compatible API.",
+  "author": {
+    "name": "UberLLM",
+    "email": "support@uberllm.dev",
+    "url": "https://uberllm.dev"
+  },
+  "homepage": "https://uberllm.dev/docs/mcp",
+  "privacyPolicyUrl": "https://uberllm.dev/privacy",
+  "repository": "https://github.com/PSA-Team-source/uberllm",
+  "license": "MIT",
+  "icon": "./assets/icon.png",
+  "keywords": [
+    "llm",
+    "api",
+    "mcp",
+    "image-generation",
+    "video-generation",
+    "claude",
+    "gpt",
+    "gemini",
+    "deepseek"
+  ],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "UberLLM API key",
+      "description": "Your ull_... key from https://uberllm.dev/dashboard/keys. The MCP server sends it as Authorization: Bearer. Leave empty to set it later with: claude plugin configure uberllm",
+      "sensitive": true
+    }
+  },
+  "mcpServers": {
+    "uberllm": {
+      "type": "http",
+      "url": "https://api.uberllm.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.api_key}"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "uberllm": {
+      "url": "https://api.uberllm.dev/mcp",
+      "bearer_token_env_var": "UBERLLM_API_KEY"
+    }
+  }
+}

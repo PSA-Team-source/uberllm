@@ -13,13 +13,107 @@ for that model, and costs what that provider charged for it.
 - Models and live prices: <https://uberllm.dev/models>
 - Docs: <https://uberllm.dev/docs>
 
-This repository holds the public tooling: the Claude Code installer with its
-checksums, the logo, and copy-paste setup for SDKs and MCP clients.
+This repository holds the public tooling: plugins for Claude Code and Codex,
+the `uberllm` agent skill, the Claude Code installer with its checksums, and
+copy-paste setup for SDKs and MCP clients.
 
 ## Get a key
 
 Sign in at <https://uberllm.dev> with your email (a code is sent, no password),
 add credit, and create a key in **Dashboard → Keys**. Keys start with `ull_`.
+
+## Install in your coding agent
+
+This repository is a Claude Code plugin, a Codex plugin and an Agent Skill.
+Each one adds UberLLM's hosted MCP server (`https://api.uberllm.dev/mcp`,
+Streamable HTTP) and/or the `uberllm` skill, which knows how to set UberLLM up,
+pick a model and make images and videos. Nothing to build or run locally: the
+server is hosted, and it authenticates with your key as
+`Authorization: Bearer ull_...`.
+
+MCP tools: `list_models`, `get_model`, `quote`, `generate_image`, `edit_image`,
+`start_video`, `get_job`, `wait_job`, `balance`. A tool call is billed exactly
+like the same API request. Full reference: <https://uberllm.dev/docs/mcp>
+
+**Claude Code plugin** (MCP server + skill). Inside Claude Code:
+
+```
+/plugin marketplace add PSA-Team-source/uberllm
+/plugin install uberllm@uberllm
+```
+
+Claude Code asks for your API key when the plugin is enabled and keeps it in
+your system's credential store. Set or change it later with
+`claude plugin configure uberllm`.
+
+**Codex plugin** (MCP server + skill):
+
+```sh
+codex plugin marketplace add PSA-Team-source/uberllm
+codex plugin add uberllm@uberllm
+export UBERLLM_API_KEY=ull_...   # the MCP server reads the key from here
+```
+
+**Skill only** (Claude Code, Codex, Cursor, OpenCode and other agents that read
+Agent Skills), via [skills.sh](https://skills.sh):
+
+```sh
+npx skills add PSA-Team-source/uberllm
+```
+
+**MCP server only, Claude Code:**
+
+```sh
+claude mcp add --transport http uberllm https://api.uberllm.dev/mcp --header "Authorization: Bearer ull_..."
+```
+
+**Cursor** (`~/.cursor/mcp.json`) and other clients that take a URL:
+
+```json
+{
+  "mcpServers": {
+    "uberllm": {
+      "url": "https://api.uberllm.dev/mcp",
+      "headers": { "Authorization": "Bearer ull_..." }
+    }
+  }
+}
+```
+
+**VS Code** (`.vscode/mcp.json`; VS Code asks for the key once and stores it):
+
+```json
+{
+  "inputs": [
+    { "type": "promptString", "id": "uberllm-key", "description": "UberLLM API key (ull_...)", "password": true }
+  ],
+  "servers": {
+    "uberllm": {
+      "type": "http",
+      "url": "https://api.uberllm.dev/mcp",
+      "headers": { "Authorization": "Bearer ${input:uberllm-key}" }
+    }
+  }
+}
+```
+
+**Claude Desktop** (Settings → Developer → Edit Config), through
+[`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
+
+```json
+{
+  "mcpServers": {
+    "uberllm": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.uberllm.dev/mcp", "--header", "Authorization:${UBERLLM_AUTH}"],
+      "env": { "UBERLLM_AUTH": "Bearer ull_..." }
+    }
+  }
+}
+```
+
+The server is listed in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=dev.uberllm)
+as `dev.uberllm/mcp` ([`server.json`](server.json)).
 
 ## OpenAI SDK
 
@@ -71,52 +165,6 @@ const { text } = await generateText({
 ```
 
 Streaming, tool calls and images: <https://uberllm.dev/docs/ai-sdk>
-
-## MCP server
-
-UberLLM is also a remote MCP server at `https://api.uberllm.dev/mcp`
-(Streamable HTTP). It authenticates with the same key, sent as
-`Authorization: Bearer ull_...`. Tools: `list_models`, `get_model`, `quote`,
-`generate_image`, `edit_image`, `start_video`, `get_job`, `wait_job`,
-`balance`. A tool call is billed exactly like the same API request.
-
-**Claude Code**
-
-```sh
-claude mcp add --transport http uberllm https://api.uberllm.dev/mcp --header "Authorization: Bearer ull_..."
-```
-
-**Cursor** (`~/.cursor/mcp.json`) and other clients that take a URL:
-
-```json
-{
-  "mcpServers": {
-    "uberllm": {
-      "url": "https://api.uberllm.dev/mcp",
-      "headers": { "Authorization": "Bearer ull_..." }
-    }
-  }
-}
-```
-
-**Claude Desktop** (Settings → Developer → Edit Config), through
-[`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
-
-```json
-{
-  "mcpServers": {
-    "uberllm": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://api.uberllm.dev/mcp", "--header", "Authorization:${UBERLLM_AUTH}"],
-      "env": { "UBERLLM_AUTH": "Bearer ull_..." }
-    }
-  }
-}
-```
-
-Full tool reference: <https://uberllm.dev/docs/mcp>
-
-It is listed in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=dev.uberllm) as `dev.uberllm/mcp` ([`server.json`](server.json)).
 
 ## Claude Code
 
@@ -173,7 +221,7 @@ Details: <https://uberllm.dev/docs/claude-code>
 
 ## Support
 
-support@uberllm.dev
+support@uberllm.dev · [Privacy](https://uberllm.dev/privacy) · [Terms](https://uberllm.dev/terms)
 
 ## License
 

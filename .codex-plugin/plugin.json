@@ -1,0 +1,31 @@
+{
+  "name": "uberllm",
+  "version": "1.0.0",
+  "description": "UberLLM MCP server (make images and videos, price requests, list models, read your balance) and a skill for setting up UberLLM's OpenAI- and Anthropic-compatible API.",
+  "author": { "name": "UberLLM", "email": "support@uberllm.dev", "url": "https://uberllm.dev" },
+  "homepage": "https://uberllm.dev/docs/mcp",
+  "repository": "https://github.com/PSA-Team-source/uberllm",
+  "license": "MIT",
+  "keywords": ["llm", "api", "mcp", "image-generation", "video-generation"],
+  "skills": "./skills/",
+  "mcpServers": "./.codex-plugin/mcp.json",
+  "interface": {
+    "displayName": "UberLLM",
+    "shortDescription": "Images, video and AI models from one API key",
+    "longDescription": "Make images and videos, price a request before you spend, list chat, image, video and music models with live prices, and read your balance through UberLLM's hosted MCP server. The bundled skill sets up UberLLM's OpenAI- and Anthropic-compatible API in Codex, Claude Code, Cursor and SDKs. A request costs what its provider charged; no UberLLM fee on requests.",
+    "developerName": "UberLLM",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://uberllm.dev",
+    "privacyPolicyURL": "https://uberllm.dev/privacy",
+    "termsOfServiceURL": "https://uberllm.dev/terms",
+    "defaultPrompt": [
+      "Use UberLLM to list the cheapest video models and their price per second.",
+      "Use UberLLM to quote, then make, a 5-second video of a red bicycle.",
+      "Use UberLLM to check my balance."
+    ],
+    "brandColor": "#5B4EE6",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}
