@@ -116,6 +116,8 @@ claude mcp add --transport http uberllm https://api.uberllm.dev/mcp --header "Au
 
 Full tool reference: <https://uberllm.dev/docs/mcp>
 
+It is listed in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=dev.uberllm) as `dev.uberllm/mcp` ([`server.json`](server.json)).
+
 ## Claude Code
 
 ### By hand (3 steps)
