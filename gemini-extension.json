@@ -1,0 +1,21 @@
+{
+  "name": "uberllm",
+  "version": "1.0.0",
+  "description": "UberLLM MCP server: make images and videos, price a request before you run it, list models with live prices and read your balance, with one UberLLM API key. Includes the uberllm skill for setting up UberLLM's OpenAI- and Anthropic-compatible API.",
+  "mcpServers": {
+    "uberllm": {
+      "httpUrl": "https://api.uberllm.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${UBERLLM_API_KEY}"
+      }
+    }
+  },
+  "settings": [
+    {
+      "name": "UberLLM API key",
+      "description": "Your ull_... key from https://uberllm.dev/dashboard/keys. Sent to https://api.uberllm.dev/mcp as Authorization: Bearer.",
+      "envVar": "UBERLLM_API_KEY",
+      "sensitive": true
+    }
+  ]
+}

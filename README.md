@@ -13,7 +13,8 @@ for that model, and costs what that provider charged for it.
 - Models and live prices: <https://uberllm.dev/models>
 - Docs: <https://uberllm.dev/docs>
 
-This repository holds the public tooling: plugins for Claude Code and Codex,
+This repository holds the public tooling: plugins for Claude Code and Codex, a
+Gemini CLI extension,
 the `uberllm` agent skill, the Claude Code installer with its checksums, and
 copy-paste setup for SDKs and MCP clients.
 
@@ -24,7 +25,8 @@ add credit, and create a key in **Dashboard → Keys**. Keys start with `ull_`.
 
 ## Install in your coding agent
 
-This repository is a Claude Code plugin, a Codex plugin and an Agent Skill.
+This repository is a Claude Code plugin, a Codex plugin, a Gemini CLI extension
+and an Agent Skill.
 Each one adds UberLLM's hosted MCP server (`https://api.uberllm.dev/mcp`,
 Streamable HTTP) and/or the `uberllm` skill, which knows how to set UberLLM up,
 pick a model and make images and videos. Nothing to build or run locally: the
@@ -53,6 +55,16 @@ codex plugin marketplace add PSA-Team-source/uberllm
 codex plugin add uberllm@uberllm
 export UBERLLM_API_KEY=ull_...   # the MCP server reads the key from here
 ```
+
+**Gemini CLI extension** (MCP server + skill):
+
+```sh
+gemini extensions install https://github.com/PSA-Team-source/uberllm
+```
+
+Gemini CLI asks for your API key on install and keeps it in your system
+keychain (change it with `gemini extensions config uberllm`). If you skip it,
+`export UBERLLM_API_KEY=ull_...` before starting `gemini` works too.
 
 **Skill only** (Claude Code, Codex, Cursor, OpenCode and other agents that read
 Agent Skills), via [skills.sh](https://skills.sh):
