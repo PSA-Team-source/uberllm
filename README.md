@@ -92,6 +92,24 @@ claude mcp add --transport http uberllm https://api.uberllm.dev/mcp --header "Au
 }
 ```
 
+**Cline** (MCP Servers → Configure MCP Servers, which opens
+`cline_mcp_settings.json`). Set `"type": "streamableHttp"`: without a type,
+Cline connects over SSE and the server does not answer that way. Step-by-step
+instructions for Cline and other agents: [`llms-install.md`](llms-install.md).
+
+```json
+{
+  "mcpServers": {
+    "uberllm": {
+      "type": "streamableHttp",
+      "url": "https://api.uberllm.dev/mcp",
+      "headers": { "Authorization": "Bearer ull_..." },
+      "disabled": false
+    }
+  }
+}
+```
+
 **VS Code** (`.vscode/mcp.json`; VS Code asks for the key once and stores it):
 
 ```json
