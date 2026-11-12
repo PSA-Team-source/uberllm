@@ -204,6 +204,7 @@ Streaming, tool calls and images: <https://uberllm.dev/docs/ai-sdk>
   speech. Each one was run against the live API.
 - [langchain-uberllm](https://github.com/PSA-Team-source/langchain-uberllm): `ChatUberLLM` for LangChain (Python).
 - [ai-sdk-provider-uberllm](https://github.com/PSA-Team-source/ai-sdk-provider-uberllm): UberLLM provider for the Vercel AI SDK.
+- [llm-uberllm](https://github.com/PSA-Team-source/llm-uberllm): plugin for Simon Willison's `llm` command-line tool.
 
 ## Claude Code
 
