@@ -196,6 +196,15 @@ const { text } = await generateText({
 
 Streaming, tool calls and images: <https://uberllm.dev/docs/ai-sdk>
 
+## More examples and packages
+
+- [`cookbook/`](cookbook): runnable examples for the OpenAI and Anthropic SDKs,
+  LangChain, LlamaIndex, LiteLLM, Pydantic AI, CrewAI, Instructor, DSPy, the Vercel
+  AI SDK, Mastra, Go, Rust, Spring AI, .NET and curl, plus images, video, music and
+  speech. Each one was run against the live API.
+- [langchain-uberllm](https://github.com/PSA-Team-source/langchain-uberllm): `ChatUberLLM` for LangChain (Python).
+- [ai-sdk-provider-uberllm](https://github.com/PSA-Team-source/ai-sdk-provider-uberllm): UberLLM provider for the Vercel AI SDK.
+
 ## Claude Code
 
 ### By hand (3 steps)

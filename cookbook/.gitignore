@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+node_modules/
+target/
+bin/
+obj/
+*.png
+*.mp3
+*.m4a
+*.wav
+*.mp4
+.DS_Store

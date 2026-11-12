@@ -1,0 +1,16 @@
+# Everything the Python examples import. Each file's docstring lists the
+# few packages that one file needs, if you only want to copy one example.
+openai>=2.0
+anthropic>=0.70
+httpx>=0.27
+pydantic>=2.7
+langchain>=1.0
+langchain-openai>=1.0
+llama-index-core>=0.14
+llama-index-llms-openai-like>=0.5
+litellm>=1.70
+pydantic-ai-slim[openai]>=1.0
+instructor>=1.10
+# These two pull in many packages; install them in their own environment:
+# dspy>=3.0
+# crewai>=1.0

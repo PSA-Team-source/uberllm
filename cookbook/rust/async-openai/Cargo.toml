@@ -1,0 +1,13 @@
+[package]
+name = "uberllm-async-openai-example"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Chat, streaming and tool calls on UberLLM with the async-openai crate"
+license = "MIT"
+
+[dependencies]
+async-openai = { version = "0.43", features = ["chat-completion"] }
+futures = "0.3"
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
