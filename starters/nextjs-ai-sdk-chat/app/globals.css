@@ -1,0 +1,92 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --bubble: #f3f4f6;
+  --accent: #2563eb;
+  --error: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f19;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --bubble: #1f2937;
+    --accent: #60a5fa;
+    --error: #fca5a5;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, sans-serif;
+}
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 96px;
+}
+.hint,
+.tool {
+  color: var(--muted);
+}
+.tool {
+  font-size: 14px;
+}
+.message {
+  margin: 12px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.message p {
+  margin: 4px 0;
+}
+.message.user {
+  background: var(--bubble);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-left: 15%;
+}
+.error {
+  color: var(--error);
+}
+form {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+  background: var(--bg);
+}
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+}
+button {
+  padding: 10px 16px;
+  font: inherit;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

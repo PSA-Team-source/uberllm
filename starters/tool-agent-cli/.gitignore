@@ -1,0 +1,7 @@
+# Your key lives here. Never commit it.
+.env
+.env.local
+
+node_modules/
+*.tsbuildinfo
+.DS_Store

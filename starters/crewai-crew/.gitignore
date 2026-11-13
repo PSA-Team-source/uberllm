@@ -1,0 +1,6 @@
+# Your key lives here. Never commit it.
+.env
+
+.venv/
+__pycache__/
+.DS_Store
