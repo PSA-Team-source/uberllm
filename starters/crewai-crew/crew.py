@@ -7,6 +7,7 @@ UberLLM speaks the OpenAI wire format, so the model is CrewAI's LLM pointed at
 a custom OpenAI-compatible endpoint: https://docs.crewai.com/en/concepts/llms
 """
 import json
+import logging
 import os
 import sys
 import urllib.parse
@@ -18,6 +19,11 @@ load_dotenv()  # reads .env when there is one; before crewai is imported, so its
 
 from crewai import LLM, Agent, Crew, Process, Task  # noqa: E402
 from crewai.tools import tool  # noqa: E402
+
+# CrewAI estimates the size of each request before it sends it, and for a model
+# it has no token counter for it prints the same warning every time. The
+# estimate is fine; this hides only that line.
+logging.getLogger("crewai.llms.base_llm").addFilter(lambda r: "approximate input token count" not in r.getMessage())
 
 # The key is only ever sent here. Passing base_url in code wins over an
 # OPENAI_BASE_URL in your shell.

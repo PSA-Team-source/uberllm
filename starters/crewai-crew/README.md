@@ -13,9 +13,13 @@ provider, as a custom OpenAI-compatible endpoint.
 
    ```sh
    npx degit PSA-Team-source/uberllm/starters/crewai-crew my-crew
-   cd my-crew && python -m venv .venv && . .venv/bin/activate
+   cd my-crew && python3 -m venv .venv && . .venv/bin/activate
    pip install -r requirements.txt
    ```
+
+   CrewAI does not install on Python 3.14 yet. If that is what you have,
+   [uv](https://docs.astral.sh/uv/) gets you a 3.13: replace `python3 -m venv .venv`
+   with `uv venv --python 3.13 .venv` and `pip install` with `uv pip install`.
 
 2. Sign in at <https://uberllm.dev>, add credit (prepaid, accounts start at $0) and
    create a key under **Dashboard → Keys**. Then:

@@ -14,7 +14,7 @@ provider, through LangChain's `ChatOpenAI` with `base_url` set.
 
    ```sh
    npx degit PSA-Team-source/uberllm/starters/langgraph-agent my-agent
-   cd my-agent && python -m venv .venv && . .venv/bin/activate
+   cd my-agent && python3 -m venv .venv && . .venv/bin/activate
    pip install -r requirements.txt
    ```
 
